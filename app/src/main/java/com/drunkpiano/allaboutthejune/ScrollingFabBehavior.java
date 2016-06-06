@@ -1,3 +1,11 @@
+/*
+ * The behavior which defines the floating action bar's hide and show methods.
+ * @author DrunkPiano
+ * @version 1.0
+ * Modifying History:
+ * Modifier: DrunkPiano, June 5th 2016, fixed to accord it with the standard coding disciplines.
+ */
+
 package com.drunkpiano.allaboutthejune;
 
 import android.content.Context;

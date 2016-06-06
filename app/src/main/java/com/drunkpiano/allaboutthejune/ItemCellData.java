@@ -1,18 +1,20 @@
+/*
+ * The data structure to store the item data.
+ * @author DrunkPiano
+ * @version 1.0
+ * Modifying History:
+ * Modifier: DrunkPiano, June 5th 2016, fixed to accord it with the standard coding disciplines.
+ */
+
 package com.drunkpiano.allaboutthejune;
 
 public class ItemCellData {
-    private String mTitle = "";
-    private String mInfo = "";
-    private String mHeaderText = "";
-    private int mImageResourceId ;
+    private String mTitle;
+    private String mInfo;
+    private String mHeaderText;
+    private int mImageResourceId;
 
-    public ItemCellData(){}
-
-    public ItemCellData(String title, String info, String headerText, int imageView) {
-        this.mTitle = title;
-        this.mInfo = info;
-        this.mHeaderText = headerText;
-        this.mImageResourceId = imageView;
+    public ItemCellData() {
     }
 
     public String getmTitle() {

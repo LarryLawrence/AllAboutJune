@@ -1,3 +1,11 @@
+/*
+ * The fragment to holder the recyclerView.
+ * @author DrunkPiano
+ * @version 1.0
+ * Modifying History:
+ * Modifier: DrunkPiano, June 5th 2016, fixed to accord it with the standard coding disciplines.
+ */
+
 package com.drunkpiano.allaboutthejune;
 
 import android.os.Bundle;
@@ -12,7 +20,6 @@ import android.view.ViewGroup;
 
 public class MainFragment extends Fragment {
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +32,15 @@ public class MainFragment extends Fragment {
         MainAdapter mMainAdapter;
 
         // Inflate the layout for this fragment
-        View v = inflater.inflate(R.layout.fragment_main, container, false);
-        mRecyclerView = (RecyclerView) v.findViewById(R.id.rv_main);
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rv_main);
         MainAdapter guideAdapter = new MainAdapter(getContext());
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
+        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(llm);
         mRecyclerView.setAdapter(guideAdapter);
-        FloatingActionButton fab = (FloatingActionButton) v.findViewById(R.id.fab);
-
 
         //如果可以确定每个item的高度是固定的，设置这个选项可以提高性能
         //        mRecyclerView.setHasFixedSize(true);
@@ -43,7 +50,12 @@ public class MainFragment extends Fragment {
             @Override
             public void onMainItemClick(int position) {
                 if (null != getView())
-                    Snackbar.make(getView(), "position " + position + " clicked", Snackbar.LENGTH_SHORT).show();
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.container_main, new NewPageFragment())
+                            .addToBackStack(null).commit();
+                if (null != getView())
+                    Snackbar.make(getView(), "position " + position
+                            + " clicked", Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -53,9 +65,9 @@ public class MainFragment extends Fragment {
                 public void onClick(View view) {
                     mRecyclerView.smoothScrollToPosition(0);
                     if (getView() != null)
-                        Snackbar.make(getView(), "let's go to top", Snackbar.LENGTH_SHORT).show();
+                        Snackbar.make(getView(), "let's get to top", Snackbar.LENGTH_SHORT).show();
                 }
             });
-        return v;
+        return rootView;
     }
 }

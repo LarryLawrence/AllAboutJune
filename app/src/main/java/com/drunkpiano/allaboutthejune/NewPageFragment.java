@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-public class NewPageFragment extends Fragment{
+public class NewPageFragment extends Fragment {
     private WebView mWebView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
@@ -31,7 +31,7 @@ public class NewPageFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_new_page,container,false);
+        View rootView = inflater.inflate(R.layout.fragment_new_page, container, false);
 
         android.support.v7.widget.Toolbar toolbar = (Toolbar) rootView.findViewById(R.id.toolbar_custom);
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout_web);
@@ -39,7 +39,7 @@ public class NewPageFragment extends Fragment{
             mSwipeRefreshLayout.setColorSchemeResources(
                     R.color.swipe_color_1, R.color.swipe_color_2,
                     R.color.swipe_color_3, R.color.swipe_color_4);
-            mSwipeRefreshLayout.setProgressViewOffset(false, 20, 80);
+            mSwipeRefreshLayout.setProgressViewOffset(false, 40, 120);
             mSwipeRefreshLayout.setRefreshing(true);
         }
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -48,18 +48,18 @@ public class NewPageFragment extends Fragment{
                 mWebView.reload();
             }
         });
-//        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_24dp);
-        mWebView = (WebView)rootView.findViewById(R.id.webView);
+        mWebView = (WebView) rootView.findViewById(R.id.web_view_main);
         mWebView.getSettings().setJavaScriptEnabled(true);
         mWebView.loadUrl("http://sale.jd.com/act/1k5RrLgYKnUFWI6T.html?t=1463931873456&cpdad=1DLSUE");
         mWebView.setWebViewClient(new MainWebViewClient());
         return rootView;
     }
 
-    class MainWebViewClient extends WebViewClient{
+    class MainWebViewClient extends WebViewClient {
         @Override
         public void onPageFinished(WebView view, String url) {
             mSwipeRefreshLayout.setRefreshing(false);
-            super.onPageFinished(view, url);        }
+            super.onPageFinished(view, url);
+        }
     }
 }

@@ -40,7 +40,8 @@ public class MainAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        if (position == 0 || position == 3 || position == 5 || position == 10 || position == 15 || position == 21)
+        if (position == 0 || position == 3 || position == 5
+                || position == 10 || position == 15 || position == 21)
             return ITEM_WITH_HEADER;
         else
             return REGULAR_ITEM;
@@ -64,15 +65,15 @@ public class MainAdapter extends RecyclerView.Adapter {
             ((RegularViewHolderWithHeader) holder).info.setText(mData[position].getmInfo());
             ((RegularViewHolderWithHeader) holder).img.setImageResource(mData[position].getmImageResourceId());
             ((RegularViewHolderWithHeader) holder).rootView.setTag(position);
-            System.out.println("position---a-->" + position);
             ((RegularViewHolderWithHeader) holder).rootView.setOnClickListener(linkListener);
+            System.out.println("position---type-a-->" + position);
         } else if (holder instanceof RegularViewHolder) {
             ((RegularViewHolder) holder).title.setText(mData[position].getmTitle());
             ((RegularViewHolder) holder).info.setText(mData[position].getmInfo());
             ((RegularViewHolder) holder).img.setImageResource(mData[position].getmImageResourceId());
-            System.out.println("position---b-->" + position);
             ((RegularViewHolder) holder).rootView.setTag(position);
             ((RegularViewHolder) holder).rootView.setOnClickListener(linkListener);
+            System.out.println("position---type-b-->" + position);
         }
     }
 
@@ -142,19 +143,19 @@ public class MainAdapter extends RecyclerView.Adapter {
 
         mData[6].setmTitle("母婴玩具");
         mData[6].setmInfo("低至满199减100");
-        mData[6].setmImageResourceId(R.drawable.card_bg_normal_fan);
+        mData[6].setmImageResourceId(R.drawable.card_bg_normal_child);
 
         mData[7].setmTitle("食品综合");
         mData[7].setmInfo("零食低至99减50");
-        mData[7].setmImageResourceId(R.drawable.card_bg_normal_fan);
+        mData[7].setmImageResourceId(R.drawable.card_bg_normal_food);
 
         mData[8].setmTitle("个护清洁");
         mData[8].setmInfo("跨品类199减100");
-        mData[8].setmImageResourceId(R.drawable.card_bg_normal_fan);
+        mData[8].setmImageResourceId(R.drawable.card_bg_normal_shampoo);
 
         mData[9].setmTitle("美妆盛宴");
         mData[9].setmInfo("满199减100");
-        mData[9].setmImageResourceId(R.drawable.card_bg_normal_fan);
+        mData[9].setmImageResourceId(R.drawable.card_bg_normal_lamer);
 
         mData[10].setmHeaderText("6.14-6.17 服饰家居城");
         mData[10].setmTitle("超值一口价");
